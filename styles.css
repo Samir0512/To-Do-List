@@ -53,15 +53,46 @@ li {
     align-items: center;
 }
 
-li.completed {
+li .task-text {
+    flex-grow: 1;
+}
+
+li .task-text.completed {
     text-decoration: line-through;
     color: #888;
 }
 
 li button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: none;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    min-width: 80px;
+    text-align: center;
+}
+
+li .delete {
     background-color: #dc3545;
 }
 
-li button:hover {
+li .delete:hover {
     background-color: #c82333;
+}
+
+li .edit {
+    background-color: #ffc107;
+}
+
+li .edit:hover {
+    background-color: #e0a800;
+}
+
+li .complete {
+    background-color: #007bff;
+}
+
+li .complete:hover {
+    background-color: #0056b3;
 }
