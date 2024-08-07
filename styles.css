@@ -53,6 +53,10 @@ li {
     align-items: center;
 }
 
+li .task-number {
+    margin-right: 10px;
+}
+
 li .task-text {
     flex-grow: 1;
 }

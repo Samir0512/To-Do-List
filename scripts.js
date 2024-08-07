@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+let taskCounter = 0;
+
 function addTask() {
     const taskInput = document.getElementById('new-task');
     const taskList = document.getElementById('task-list');
@@ -16,8 +18,14 @@ function addTask() {
         return;
     }
 
+    taskCounter++;
+
     const li = document.createElement('li');
     
+    const taskNumber = document.createElement('span');
+    taskNumber.textContent = taskCounter + '. ';
+    taskNumber.className = 'task-number';
+
     const taskText = document.createElement('span');
     taskText.textContent = taskInput.value;
     taskText.className = 'task-text';
@@ -43,11 +51,11 @@ function addTask() {
     deleteButton.textContent = 'Удалить';
     deleteButton.className = 'delete';
     deleteButton.onclick = function() {
-        if (confirm('Вы уверены, что хотите удалить эту задачу?')) {
-            taskList.removeChild(li);
-        }
+        taskList.removeChild(li);
+        updateTaskNumbers();
     };
 
+    li.appendChild(taskNumber);
     li.appendChild(taskText);
     li.appendChild(completeButton);
     li.appendChild(editButton);
@@ -56,4 +64,12 @@ function addTask() {
     taskList.appendChild(li);
     taskInput.value = '';
     taskInput.focus();
+}
+
+function updateTaskNumbers() {
+    const tasks = document.querySelectorAll('#task-list li .task-number');
+    tasks.forEach((task, index) => {
+        task.textContent = (index + 1) + '. ';
+    });
+    taskCounter = tasks.length;
 }
